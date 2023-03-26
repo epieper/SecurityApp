@@ -7,6 +7,7 @@ if (navigator.serviceWorker) {
 // Delay serviceWorker register
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
+        askPermission();
         navigator.serviceWorker.register('/SecurityApp/service-worker.js', { scope: '/SecurityApp/' })
             .then(function (registration) {
                 const subscribeOptions = {
@@ -25,5 +26,21 @@ if ('serviceWorker' in navigator) {
                 );
                 return pushSubscription;
             });
+    });
+}
+
+function askPermission() {
+    return new Promise(function (resolve, reject) {
+        const permissionResult = Notification.requestPermission(function (result) {
+            resolve(result);
+        });
+
+        if (permissionResult) {
+            permissionResult.then(resolve, reject);
+        }
+    }).then(function (permissionResult) {
+        if (permissionResult !== 'granted') {
+            throw new Error("We weren't granted permission.");
+        }
     });
 }

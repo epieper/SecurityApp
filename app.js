@@ -9,7 +9,7 @@ askPermission();
 // Delay serviceWorker register
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/SecurityApp/service-worker.js', { scope: '/SecurityApp/' })
+        navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
             .then(function (registration) {
                 const subscribeOptions = {
                     userVisibleOnly: true,
@@ -25,6 +25,7 @@ if ('serviceWorker' in navigator) {
                     'Received PushSubscription: ',
                     JSON.stringify(pushSubscription),
                 );
+                sendSubscriptionToBackEnd(pushSubscription);
                 return pushSubscription;
             });
     });
@@ -44,4 +45,26 @@ function askPermission() {
             throw new Error("We weren't granted permission.");
         }
     });
+}
+
+function sendSubscriptionToBackEnd(subscription) {
+    return fetch('/api/save-subscription/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscription),
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Bad status code from server.');
+            }
+
+            return response.json();
+        })
+        .then(function (responseData) {
+            if (!(responseData.data && responseData.data.success)) {
+                throw new Error('Bad response from server.');
+            }
+        });
 }

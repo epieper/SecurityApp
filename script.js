@@ -1,6 +1,6 @@
 /* Socket.io setup */
 try {
-    var socket = io('https://192.168.50.53:8080');
+    var socket = io();
 } catch (error) {
     console.log("Socket.io unable to connect!");
     //console.log(error);

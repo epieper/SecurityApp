@@ -2,12 +2,12 @@ var APP_PREFIX = 'ApplicationName_';     // Identifier for this app (this needs 
 var VERSION = 'version_01';              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [                            // Add URL you want to cache in this list.
-  '/SecurityApp/',                     // If you have separate JS/CSS files,
-  '/SecurityApp/index.html',            // add path to those files here
-  '/SecurityApp/app.js',
-  '/SecurityApp/manifest.json',
-  '/SecurityApp/style.css',
-  '/SecurityApp/script.js'
+  '/',                     // If you have separate JS/CSS files,
+  '/index.html',            // add path to those files here
+  '/app.js',
+  '/manifest.json',
+  '/style.css',
+  '/script.js'
 ];
 
 // Respond with cached resources

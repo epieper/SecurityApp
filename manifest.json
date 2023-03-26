@@ -1,6 +1,6 @@
 {
-  "theme_color": "#4b5788",
-  "background_color": "#12225f",
+  "theme_color": "white",
+  "background_color": "#f3f3f3",
   "display": "fullscreen",
   "start_url": "/SecurityApp/index.html",
   "name": "Security App",

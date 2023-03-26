@@ -7,6 +7,6 @@ if (navigator.serviceWorker) {
 /* Delay serviceWorker register */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/SecurityApp/service-worker.js');
+        navigator.serviceWorker.register('/SecurityApp/service-worker.js', { scope: '/SecurityApp/' });
     });
 }

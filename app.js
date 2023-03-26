@@ -4,10 +4,11 @@ if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/SecurityApp/service-worker.js', { scope: '/SecurityApp/' });
 }
 */
+
+askPermission();
 // Delay serviceWorker register
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        askPermission();
         navigator.serviceWorker.register('/SecurityApp/service-worker.js', { scope: '/SecurityApp/' })
             .then(function (registration) {
                 const subscribeOptions = {

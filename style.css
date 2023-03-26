@@ -1,0 +1,382 @@
+.theme-light {
+  --color-primary: #f3f3f3;
+  --color-foreground: white;
+  --color-secondary: #ccc;
+  --color-accent: #ccc;
+  --color-hover: #ddd;
+  --font-color: black;
+  --toggle-back: #ccc;
+  --toggle-slider: white;
+  --toggle-checked: #2196f3;
+  --alarm-active: red;
+  --alarm-silenced: #ccc;
+  --shadow: #00000033;
+  --color-remove: #c42d2d;
+  --color-remove-hover: red;
+  --color-connection-connected: #007d04;
+}
+.theme-dark {
+  --color-primary: #0c1012;
+  --color-foreground: #151d1f;
+  --color-secondary: #151d1f;
+  --color-accent: black;
+  --color-hover: #252e30;
+  --font-color: #d9d9d9;
+  --toggle-back: #3f4b4d;
+  --toggle-slider: #d9d9d9;
+  --toggle-checked: #02467e;
+  --alarm-active: #c90202;
+  --alarm-silenced: #3f4b4d;
+  --shadow: #ffffff33;
+  --color-remove: #872323;
+  --color-remove-hover: #c90202;
+  --color-connection-connected: #004002;
+}
+
+/* CSS that should be displayed if width is equal to or less than max-width*/
+/*
+@media (min-width: 1000px) {
+  body {
+    --size-font-large: 18px;
+    --size-font-medium: 16px;
+    --size-font-small: 12px;
+    --size-tabs: 60px;
+    --size-padding-vertical-large: 20px;
+    --size-padding-vertical-medium: 10px;
+    --size-padding-vertical-small: 4px;
+    --size-padding-horizontal-medium: 10px;
+    --size-padding-horizontal-small: 4px;
+    --size-toggle-width: 70px;
+    --size-toggle-height: 34px;
+    --size-slider-borderRadius: 34px;
+    --size-slider-before: 26px;
+    --size-slider-transform: 34px;
+    --size-button-height: 80px;
+    --size-boxshadow-small: 4px;
+    --size-boxshadow-medium: 6px;
+    --size-boxshadow-large: 10px;
+    --size-settings-width: 150px;
+    --size-settings-input-height: 26px;
+  }
+}
+*/
+
+@media (min-width: 1000px) {
+  body {
+    --size-font-large: 40px;
+    --size-font-medium: 32px;
+    --size-font-small: 25px;
+    --size-tabs: 80px;
+    --size-padding-vertical-large: 20px;
+    --size-padding-vertical-medium: 12px;
+    --size-padding-vertical-small: 8px;
+    --size-padding-horizontal-medium: 10px;
+    --size-padding-horizontal-small: 4px;
+    --size-toggle-width: 100px;
+    --size-toggle-height: 50px;
+    --size-slider-borderRadius: 50px;
+    --size-slider-before: 42px;
+    --size-slider-transform: 50px;
+    --size-button-height: 80px;
+    --size-boxshadow-small: 6px;
+    --size-boxshadow-medium: 10px;
+    --size-boxshadow-large: 15px;
+    --size-settings-width: 350px;
+    --size-settings-input-height: 40px;
+  }
+}
+
+@media (max-width: 1000px) {
+  body{
+    --size-font-large: 60px;
+    --size-font-medium: 50px;
+    --size-font-small: 40px;
+    --size-tabs: 160px;
+    --size-padding-vertical-large: 40px;
+    --size-padding-vertical-medium: 20px;
+    --size-padding-vertical-small: 8px;
+    --size-padding-horizontal-medium: 10px;
+    --size-padding-horizontal-small: 4px;
+    --size-toggle-width: 140px;
+    --size-toggle-height: 68px;
+    --size-slider-borderRadius: 68px;
+    --size-slider-before: 60px;
+    --size-slider-transform: 68px;
+    --size-button-height: 160px;
+    --size-boxshadow-small: 8px;
+    --size-boxshadow-medium: 12px;
+    --size-boxshadow-large: 20px;
+    --size-settings-width: 360px;
+    --size-settings-input-height: 60px;
+  }
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: var(--font-color);
+  background-color: var(--color-primary);
+  font-size: var(--size-font-large);
+}
+
+/* Style the connectionStatus element */
+#connectionStatus {
+  padding: var(--size-padding-vertical-small);
+  background-color: var(--color-connection-connected);
+  text-align: center;
+  font-size: var(--size-font-medium);
+  font-weight: bold;
+}
+
+#connectionStatus.alarm {
+  background-color: var(--alarm-active);
+}
+
+/* Style the tabs container */
+.tabs {
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  /* This height determines the height of the tab buttons */
+  height: var(--size-tabs);
+}
+
+/* Style the buttons that are used to open the tab content */
+.tabs button {
+  width: 50%;
+  height: 100%;
+  color: var(--font-color);
+  background-color: var(--color-secondary);
+  float: left;
+  border-top: 1px solid var(--color-hover);
+  border-left: 1px solid var(--color-hover);
+  border-right: 1px solid var(--color-hover);
+  border-bottom: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  font-size: var(--size-font-medium);
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+  background-color: var(--color-hover);
+}
+
+/* Create an active/current tablink class */
+.tabs button.active {
+  background-color: var(--color-primary);
+}
+
+/* Style the tab content */
+.tabContent {
+  display: none;
+  background-color: var(--color-primary);
+  padding: 6px 12px;
+  padding-bottom: 15%;
+}
+
+/* Style the Toggle Slider */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: var(--size-toggle-width);
+  height: var(--size-toggle-height);;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-back);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: var(--size-slider-borderRadius);
+}
+
+.slider.alarm {
+  background-color: var(--alarm-active);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-slider-before);
+  width: var(--size-slider-before);
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--toggle-slider);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--toggle-checked);
+}
+
+input:checked + .slider.alarm {
+  background-color: var(--alarm-silenced);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(var(--size-slider-transform));
+  -ms-transform: translateX(var(--size-slider-transform));
+  transform: translateX(var(--size-slider-transform));
+}
+
+.nightModeToggle {
+  margin: auto;
+  width: 100%;
+  padding: var(--size-padding-vertical-large) var(--size-padding-horizontal-medium);
+  text-align: center;
+  font-size: var(--size-font-medium);
+}
+
+.nightModeToggle div {
+  display: inline-block;
+}
+
+.device {
+  margin: var(--size-padding-vertical-small) auto;
+  width: 95%;
+  font-size: var(--size-font-medium);
+}
+
+.deviceButton {
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  background-color: var(--color-foreground);
+  box-shadow: 0px var(--size-boxshadow-small) var(--size-boxshadow-small) 0 var(--shadow);
+  text-align: center;
+  font-weight: bold;
+}
+
+.deviceButton:hover {
+  background-color: var(--color-hover);
+  box-shadow: 0 var(--size-boxshadow-small) var(--size-boxshadow-medium) 0 var(--shadow), 0 var(--size-boxshadow-medium) var(--size-boxshadow-large) 0 var(--shadow);
+}
+
+.deviceComponent {
+  display: inline-block;
+  white-space: nowrap;
+  margin: auto;
+  width: 30%;
+  height: 100%;
+  text-align: center;
+}
+
+.deviceComponent.deviceName {
+  line-height: var(--size-button-height);
+  overflow: auto;
+}
+
+.deviceComponent.deviceStatus {
+  line-height: var(--size-button-height);
+  border-left: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  overflow: auto;
+}
+
+.deviceStatus.alarm {
+  background-color: var(--alarm-active);
+}
+
+.deviceComponent.deviceToggle {
+  overflow: auto;
+}
+
+.deviceComponent.deviceToggle span {
+  display: block;
+  font-size: var(--size-font-small);
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Style the device content */
+.deviceDropdown {
+  display: none;
+  box-shadow: 0px var(--size-boxshadow-small) var(--size-boxshadow-medium) 0 var(--shadow);
+  background-color: var(--color-foreground);
+  margin-left: 3%;
+  padding: 6px 12px;
+  border-top: 1px solid var(--color-secondary);
+}
+
+.deviceDropdown p {
+  margin: 4px 0;
+  padding: var(--size-padding-vertical-medium) var(--size-padding-horizontal-small);
+}
+
+.deviceDropdown p:hover {
+  background-color: var(--color-hover);
+}
+
+.deviceDropdown .bordered {
+  border: 1px solid var(--color-accent);
+}
+
+.deviceSettings p.label {
+  display: inline-block;
+  width: var(--size-settings-width);
+  text-align: right;
+  font-size: var(--size-font-medium);
+}
+
+.deviceSettings input {
+  height: var(--size-settings-input-height);
+  width: var(--size-settings-width);
+  font-size: var(--size-font-medium);
+  text-overflow: ellipsis;
+}
+
+.deviceSettings .removeButton {
+  cursor: pointer;
+  box-shadow: 0px var(--size-boxshadow-small) var(--size-boxshadow-medium) 0 var(--shadow);
+  background-color: var(--color-remove);
+  margin: var(--size-padding-vertical-large);
+  padding: var(--size-padding-vertical-medium) 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.deviceSettings .removeButton:hover {
+  background-color: var(--color-remove-hover);
+  box-shadow: 0 var(--size-boxshadow-small) var(--size-boxshadow-small) 0 var(--shadow), 0 var(--size-boxshadow-medium) var(--size-boxshadow-large) 0 var(--shadow);
+}
+
+#addDeviceButton {
+  cursor: pointer;
+  margin: 15px 25%;
+  width: 50%;
+  padding: var(--size-padding-vertical-medium) var(--size-padding-horizontal-medium);
+  height: var(--size-button-height);
+  text-align: center;
+  font-size: var(--size-font-medium);
+  color: var(--font-color);
+  background-color: var(--color-foreground);
+  box-shadow: 0px var(--size-boxshadow-small) var(--size-boxshadow-medium) 0 var(--shadow);
+  border: 1px solid var(--color-primary);
+}
+
+#addDeviceButton:hover {
+  background-color: var(--color-hover);
+  box-shadow: 0 var(--size-boxshadow-small) var(--size-boxshadow-small) 0 var(--shadow), 0 var(--size-boxshadow-medium) var(--size-boxshadow-large) 0 var(--shadow);
+}

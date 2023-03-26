@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>Security App</title>
+    <link rel="stylesheet" type="text/css" href="/SecurityApp/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/SecurityApp/icons/ios/180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/SecurityApp/icons/windows11/Square44x44Logo.targetsize-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/SecurityApp/icons/windows11/Square44x44Logo.targetsize-16.png">
+    <link rel="manifest" href="/SecurityApp/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <script src="/SecurityApp/app.js" defer></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body class="theme-light" id="body">
+  <div id="connectionStatus" class="alarm">
+    Not Connected!
+  </div>
+  <div id="nightModeToggle" class="nightModeToggle">
+    <div>Day Mode <span style="color: #fc8c03">&#9788;</span></div>
+    <label class="toggle">
+      <input type="checkbox" onclick="toggleNightMode()">
+      <span class="slider"></span>
+    </label>
+    <div><b>&#9790;</b> Night Mode</div>
+  </div>
+
+  <!-- Tab links -->
+  <div class="tabs">
+    <button class="tabbutton" onclick="openTab(this, 'tab-AlarmPanel')">Alarm Panel</button>
+    <button class="tabbutton" onclick="openTab(this, 'tab-DeviceList')">Device List</button>
+  </div>
+
+  <div id="tab-AlarmPanel" class="tabContent">
+    <div id="container-AlarmPanel" class="alarmPanel">
+      <!-- Device elements will be inserted here -->
+    </div>
+  </div>
+
+  <div id="tab-DeviceList" class="tabContent">
+    <div id="container-DeviceList">
+      <!-- Device elements will be inserted here -->
+    </div>
+    <button id="addDeviceButton" onclick="addDevice()">
+      Add Device
+    </button>
+  </div>
+
+  <!-- Template for Alarm Panel buttons -->
+  <script id="templateButton-AlarmPanel" type="text/html">
+    <div id="AlarmPanel-[deviceId]" class="device">
+        <div id="AlarmPanel-deviceButton-[deviceId]" class="deviceButton">
+          <div class="deviceComponent deviceName" onclick="openDeviceDropdown('AlarmPanel-log-[deviceId]')">
+            <span id="AlarmPanel-deviceName-[deviceId]">Device</span>
+          </div>
+          <div id="AlarmPanel-deviceStatus-[deviceId]" class="deviceComponent deviceStatus alarm" onclick="openDeviceDropdown('AlarmPanel-log-[deviceId]')">
+            Open
+          </div>
+          <div class="deviceComponent deviceToggle">
+            <span id="AlarmPanel-silencedText-[deviceId]">Active / Silenced</span>
+            <label class="toggle">
+              <input id="AlarmPanel-silencedToggle-[deviceId]" type="checkbox" onclick="changeDeviceSilenced('[deviceId]', checked)">
+              <span class="slider alarm"></span>
+            </label>
+          </div>
+        </div>
+        <div id="AlarmPanel-log-[deviceId]" class="deviceDropdown">
+          <p>Test Content</p>
+          <p>Test Content</p>
+        </div>
+      </div>
+  </script>
+
+  <!-- Template for Device List buttons -->
+  <script id="templateButton-DeviceList" type="text/html">
+    <div id="DeviceList-[deviceId]" class="device">
+        <div id="DeviceList-deviceButton-[deviceId]" class="deviceButton">
+          <div class="deviceComponent deviceName" onclick="openDeviceDropdown('DeviceList-settings-[deviceId]')">
+            <span id="DeviceList-deviceName-[deviceId]">Device</span>
+          </div>
+          <div id="DeviceList-deviceStatus-[deviceId]" class="deviceComponent deviceStatus" onclick="openDeviceDropdown('DeviceList-settings-[deviceId]')">
+            Open
+          </div>
+          <div class="deviceComponent deviceToggle">
+            <span id="DeviceList-enabledText-[deviceName]">Disabled / Enabled</span>
+            <label class="toggle">
+              <input id="DeviceList-enabledToggle-[deviceId]" type="checkbox" onclick="changeDeviceEnabled('[deviceId]', checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div id="DeviceList-settings-[deviceId]" class="deviceDropdown">
+          <div class="deviceSettings">
+            <div class="bordered">
+              <p class="label">Device Name:</p>
+              <input type="text" id="DeviceList-settings-deviceName-[deviceId]" value="Device" oninput="changeDeviceName('[deviceId]', value)">
+            </div>
+            <div class="bordered">
+              <p class="label">Status Text:</p>
+              <div>
+                <p class="label">Active:</p>
+                <input type="text" id="DeviceList-settings-statusTextActive-[deviceId]" value="OPEN" oninput="changeDeviceStatusTextActive('[deviceId]', value)">
+              </div>
+              <div>
+                <p class="label">Inactive:</p>
+                <input type="text" id="DeviceList-settings-statusTextInactive-[deviceId]" value="CLOSED" oninput="changeDeviceStatusTextInactive('[deviceId]', value)">
+              </div>
+            </div>
+            <div class="bordered">
+              <p class="label">Time Delay:</p>
+              <input type="number" id="DeviceList-settings-timeDelay-[deviceId]" value="30" oninput="changeDeviceTimeDelay('[deviceId]', value)">
+            </div>
+            <div class="bordered">
+              <p class="label">GPIO Pin:</p>
+              <input type="number" step="1" id="DeviceList-settings-gpioPin-[deviceId]" oninput="changeDeviceGPIO('[deviceId]', value)">
+            </div>
+            <div class="bordered">
+              <div class="removeButton" onclick="removeDevice('[deviceId]')">Remove Device</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </script>
+
+</body>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

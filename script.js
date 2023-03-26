@@ -1,10 +1,3 @@
-/* Delay serviceWorker register */
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js');
-    });
-}
-
 /* Socket.io setup */
 var socket = io('https://192.168.50.53:8080');
 window.addEventListener("load", function(){ //when page loads

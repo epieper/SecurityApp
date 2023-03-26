@@ -34,35 +34,8 @@
     --color-connection-connected: #004002;
 }
 
-/* CSS that should be displayed if width is equal to or less than max-width*/
-/*
-@media (min-width: 1000px) {
-  body {
-    --size-font-large: 18px;
-    --size-font-medium: 16px;
-    --size-font-small: 12px;
-    --size-tabs: 60px;
-    --size-padding-vertical-large: 20px;
-    --size-padding-vertical-medium: 10px;
-    --size-padding-vertical-small: 4px;
-    --size-padding-horizontal-medium: 10px;
-    --size-padding-horizontal-small: 4px;
-    --size-toggle-width: 70px;
-    --size-toggle-height: 34px;
-    --size-slider-borderRadius: 34px;
-    --size-slider-before: 26px;
-    --size-slider-transform: 34px;
-    --size-button-height: 80px;
-    --size-boxshadow-small: 4px;
-    --size-boxshadow-medium: 6px;
-    --size-boxshadow-large: 10px;
-    --size-settings-width: 150px;
-    --size-settings-input-height: 26px;
-  }
-}
-*/
-
-@media (min-width: 1000px) {
+/* Desktop size screens */
+@media (min-width: 0px) {
     body {
         --size-font-large: 40px;
         --size-font-medium: 32px;
@@ -87,30 +60,33 @@
     }
 }
 
+/* Mobile size screens */
+/*
 @media (max-width: 1000px) {
-    body {
-        --size-font-large: 60px;
-        --size-font-medium: 50px;
-        --size-font-small: 40px;
-        --size-tabs: 160px;
-        --size-padding-vertical-large: 40px;
-        --size-padding-vertical-medium: 20px;
-        --size-padding-vertical-small: 8px;
-        --size-padding-horizontal-medium: 10px;
-        --size-padding-horizontal-small: 4px;
-        --size-toggle-width: 140px;
-        --size-toggle-height: 68px;
-        --size-slider-borderRadius: 68px;
-        --size-slider-before: 60px;
-        --size-slider-transform: 68px;
-        --size-button-height: 160px;
-        --size-boxshadow-small: 8px;
-        --size-boxshadow-medium: 12px;
-        --size-boxshadow-large: 20px;
-        --size-settings-width: 360px;
-        --size-settings-input-height: 60px;
-    }
+  body{
+    --size-font-large: 60px;
+    --size-font-medium: 50px;
+    --size-font-small: 40px;
+    --size-tabs: 160px;
+    --size-padding-vertical-large: 40px;
+    --size-padding-vertical-medium: 20px;
+    --size-padding-vertical-small: 8px;
+    --size-padding-horizontal-medium: 10px;
+    --size-padding-horizontal-small: 4px;
+    --size-toggle-width: 140px;
+    --size-toggle-height: 68px;
+    --size-slider-borderRadius: 68px;
+    --size-slider-before: 60px;
+    --size-slider-transform: 68px;
+    --size-button-height: 160px;
+    --size-boxshadow-small: 8px;
+    --size-boxshadow-medium: 12px;
+    --size-boxshadow-large: 20px;
+    --size-settings-width: 360px;
+    --size-settings-input-height: 60px;
+  }
 }
+*/
 
 body,
 html {

@@ -1,0 +1,21 @@
+{
+  "theme_color": "#4b5788",
+  "background_color": "#12225f",
+  "display": "fullscreen",
+  "start_url": "/SecurityApp/index.html",
+  "name": "Security App",
+  "short_name": "Security App",
+  "icons": [
+    {
+      "src": "/SecurityApp/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/SecurityApp/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+
+  ]
+}

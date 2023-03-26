@@ -6,15 +6,17 @@ if ('serviceWorker' in navigator) {
 }
 
 /* Socket.io setup */
-var socket = io();
+var socket = io('https://192.168.50.53:8080');
 window.addEventListener("load", function(){ //when page loads
   
 });
 
 var heartbeatReceived = false;
-socket.on('heartbeat', function (data) { //get button status from client
-  heartbeatReceived = true;
-});
+if(socket.connected){
+    socket.on('heartbeat', function (data) { //get button status from client
+        heartbeatReceived = true;
+    });
+}
 setInterval(heartbeatCheck, 1000);
 function heartbeatCheck(){
   var connectionStatusElement = document.getElementById("connectionStatus");
@@ -30,9 +32,11 @@ function heartbeatCheck(){
   }
 }
 
-socket.on('updateDevicesFromServer', function (data) { //get button status from client
-  updateDevicesFromServer(data);
-});
+if(socket.connected){
+    socket.on('updateDevicesFromServer', function (data) { //get button status from client
+        updateDevicesFromServer(data);
+    });
+}
 function updateDevicesFromServer(updatedDevices){
   devices = updatedDevices;
   updateDevicesGraphics();
@@ -43,7 +47,9 @@ function sendDevicesToServer(){
   for(var i=0;i<devices.length;i++){
     devicesString += i+";"+devices[i].deviceName+";"+devices[i].currentStatus+";"+devices[i].enabledToggle+";"+devices[i].silencedToggle+";"+devices[i].statusTextActive+";"+devices[i].statusTextInactive+";"+devices[i].timeDelay+";"+devices[i].gpioPin+"\n";
   }
-  socket.emit('devicesUpdate', devicesString);
+    if(socket.connected){
+        socket.emit('devicesUpdate', devicesString);
+    }
 }
 
 
